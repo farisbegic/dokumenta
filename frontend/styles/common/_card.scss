@@ -1,20 +1,23 @@
 .card{
   @include flex-container(column, space-between, center);
-  padding: 100px;
+  padding: 100px 50px;
   border-radius: 10px;
   box-shadow: 5px 5px 10px $shadow-color;
-  color: $primary-color;
-
 }
 
 .card p{
   text-transform: uppercase;
   font-weight: 600;
-
+  margin-top: 20px;
+  color: $primary-color;
 }
 
 .card:hover{
   background-color: $primary-color;
   color: $background-color;
   transition: .2s ease-in;
+}
+
+.card:hover p{
+  color: $background-color;
 }

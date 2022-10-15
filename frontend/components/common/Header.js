@@ -19,7 +19,7 @@ const Header = () => {
 
     const isSticky = () => {
         const scrollTop = window.scrollY;
-        const stickyClass = scrollTop >= 250 ? "is-sticky" : "";
+        const stickyClass = scrollTop >= 100 ? "is-sticky" : "";
         setSticky(stickyClass);
     };
 

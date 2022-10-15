@@ -20,6 +20,38 @@
   padding-top: 20%;
 }
 
-.home-hero h1{
+.home-hero h1, h2{
   color: $background-color;
+}
+
+@media (max-width: 1220px){
+  .home-hero{
+    @include flex-container(column,space-between,center)
+  }
+
+  .home-hero-msg{
+    @include flex-container(column,space-between,center);
+    padding-bottom: 0;
+    text-align: center;
+  }
+
+  .home-hero-btn{
+    padding-top: 10%;
+  }
+}
+
+@media (max-width: 870px){
+  .home-hero h1{
+    font-size: 30px;
+  }
+
+  .home-hero h2{
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 500px){
+  .home-hero{
+    padding: 100px 10px;
+  }
 }
