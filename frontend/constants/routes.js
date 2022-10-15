@@ -8,7 +8,7 @@ export default {
         name: 'Login'
     },
     register: {
-        link: '/login',
+        link: '/register',
         name: 'Register'
     }
 }
