@@ -29,13 +29,13 @@
 }
 
 .heading {
-  font-size: 30px;
+  font-size: 48px;
   font-weight: 600;
 }
 
 .subheading {
-  font-size: 20px;
-  font-weight: 400;
+  font-size: 24px;
+  font-weight: 600;
 }
 
 .paragraph {
@@ -43,11 +43,13 @@
   font-weight: 400;
 }
 
+
 .error-message {
   color: $error-color;
   padding: 10px;
   text-align: center
 }
+
 // Import styles
 
 @import "common/_all.scss";
