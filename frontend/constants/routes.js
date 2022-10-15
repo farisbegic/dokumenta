@@ -18,5 +18,8 @@ export default {
     settings: {
         link: '/profile/settings',
         name: 'Settings'
+    },
+    logout: {
+        name: 'Odjava'
     }
 }
