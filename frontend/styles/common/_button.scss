@@ -1,0 +1,60 @@
+.button {
+  text-decoration: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.sm-primary {
+  background-color: $primary-color;
+  color: $background-color;
+  padding: 10px 30px;
+  font-size: 16px;
+}
+
+.md-primary {
+  background-color: $primary-color;
+  color: $background-color;
+  padding: 10px 50px;
+  font-size: 20px;
+}
+
+.lg-primary {
+  background-color: $primary-color;
+  color: $background-color;
+  padding: 10px 70px;
+  font-size: 24px;
+}
+
+.sm-secondary {
+  background-color: $background-color;
+  color: $primary-color;
+  padding: 10px 30px;
+  font-size: 16px;
+ }
+
+.md-secondary {
+  background-color: $background-color;
+  color: $primary-color;
+  padding: 10px 50px;
+  font-size: 20px;
+}
+
+.lg-secondary {
+  background-color: $background-color;
+  color: $primary-color;
+  padding: 10px 70px;
+  font-size: 24px;
+}
+
+.sm-primary:hover, .md-primary:hover, .lg-primary:hover{
+  background-color: $background-color;
+  color: $primary-color;
+  transition: .1s ease-in;
+}
+
+.sm-secondary:hover, .md-secondary:hover, .lg-secondary:hover{
+  background-color: $secondary-color;
+  color: $background-color;
+  transition: .1s ease-in;
+}
+

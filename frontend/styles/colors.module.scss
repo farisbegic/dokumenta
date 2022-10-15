@@ -1,7 +1,13 @@
 $primary-color: #0b4f6c;
-$background-color: #fff;
+$secondary-color: #1E84B3;
+$contrast-color: #1f271b;
+$background-color: #fffffa;
+$shadow-color: rgba(0, 0, 0, 0.1);
 
 :export {
   primaryColor: $primary-color;
-  backgroundColor: $background-color
+  secondaryColor: $secondary-color;
+  contrastColor: $contrast-color;
+  backgroundColor: $background-color;
+  shadowColor: $shadow-color;
 }
