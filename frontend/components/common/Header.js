@@ -11,7 +11,6 @@ const Header = () => {
     const [sticky, setSticky] = useState("");
 
     useEffect(() => {
-        console.log("hello");
         window.addEventListener("scroll", isSticky);
         return () => {
             window.removeEventListener("scroll", isSticky);
@@ -22,7 +21,6 @@ const Header = () => {
         const scrollTop = window.scrollY;
         const stickyClass = scrollTop >= 250 ? "is-sticky" : "";
         setSticky(stickyClass);
-        console.log(stickyClass);
     };
 
     const classes = `header-section d-none d-xl-block ${sticky}`;
@@ -30,7 +28,7 @@ const Header = () => {
     return (
         <header className={classes}>
             <div className="wrapper head-wrap">
-                <Link href={routes.home} passHref>
+                <Link href={routes.home.link} passHref>
                     <a className="nav-logo">Dokumenta</a>
                 </Link>
 
@@ -43,6 +41,9 @@ const Header = () => {
                     </Link>
                     <Link href={routes.register.link} passHref>
                         <a className="nav-item" onClick={handleClick}>{routes.register.name} </a>
+                    </Link>
+                    <Link href={routes.profile.link} passHref>
+                        <a className="nav-item" onClick={handleClick}>{routes.profile.name} </a>
                     </Link>
                 </nav>
 

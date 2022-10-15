@@ -2,6 +2,7 @@
   text-decoration: none;
   border-radius: 10px;
   cursor: pointer;
+  @include flex-container(row,space-between,center);
 }
 
 .sm-primary {
@@ -47,8 +48,8 @@
 }
 
 .sm-primary:hover, .md-primary:hover, .lg-primary:hover{
-  background-color: $background-color;
-  color: $primary-color;
+  background-color: $secondary-color;
+  color: $background-color;
   transition: .1s ease-in;
 }
 

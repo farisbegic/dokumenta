@@ -1,14 +1,18 @@
 export default {
     home: {
         link: '/',
-        name: 'Home'
+        name: 'Pocetna'
     },
     login: {
         link: '/login',
-        name: 'Login'
+        name: 'Prijava'
     },
     register: {
         link: '/register',
-        name: 'Register'
+        name: 'Registracija'
+    },
+    profile: {
+        link: '/profile',
+        name: 'Profil'
     }
 }
