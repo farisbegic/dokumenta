@@ -14,5 +14,9 @@ export default {
     profile: {
         link: '/profile',
         name: 'Profil'
+    },
+    settings: {
+        link: '/profile/settings',
+        name: 'Settings'
     }
 }
