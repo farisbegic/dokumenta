@@ -34,9 +34,16 @@ const getAllDocuments = async () => {
     return knex('document');
 }
 
+const getDocumentById = async (document_id) => {
+    await checkIfDocumentExists(document_id);
+
+    return knex('document').where({document_id}).first();
+}
+
 module.exports = {
     getRequestsByUserId,
     saveRequest,
     checkIfDocumentExists,
-    getAllDocuments
+    getAllDocuments,
+    getDocumentById
 }

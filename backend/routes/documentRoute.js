@@ -9,5 +9,7 @@ router.get("/user", isAuth, documentController.getRequestsByUserId);
 router.post("/", isAuth, documentController.saveRequest);
 // Get all documents
 router.get("/", documentController.getAllDocuments);
+// Get document by id
+router.get("/:id", documentController.getDocumentById);
 
 module.exports = router;

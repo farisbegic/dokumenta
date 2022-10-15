@@ -42,8 +42,19 @@ const getAllDocuments = async (req, res) => {
     }
 }
 
+const getDocumentById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const document = await documentRepository.getDocumentById(id);
+        res.status(200).json(document);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
 module.exports = {
     getRequestsByUserId,
     saveRequest,
-    getAllDocuments
+    getAllDocuments,
+    getDocumentById
 }
