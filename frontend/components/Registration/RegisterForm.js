@@ -7,6 +7,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import municipalities from '../../constants/municipalities';
+import FunctionalButton from '../common/FunctionalButton';
 
 const RegisterForm = () => {
 
@@ -51,6 +52,7 @@ const RegisterForm = () => {
       }}
       >
         <div className='container'>
+          <h1>Registracija</h1>
         <form className='form' onSubmit={formik.handleSubmit}>
             <TextField id="firstName" name='firstName' label="Unesite Vaše ime"  variant="outlined" onBlur={formik.handleBlur}
              value={formik.values.firstName} onChange={formik.handleChange}  />
@@ -103,7 +105,7 @@ const RegisterForm = () => {
             ) : null}
 
         </form>
-        <button type='submit' onClick={formik.handleSubmit}>Registruj se</button>
+        <FunctionalButton name="Registruj se" size="xs-primary"  />
         </div>
         </Box>
         
