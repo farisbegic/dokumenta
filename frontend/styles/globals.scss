@@ -44,8 +44,15 @@
 }
 
 
+.error-message {
+  color: $error-color;
+  padding: 10px;
+
+}
+
 // Import styles
 
 @import "common/_all.scss";
 @import "Home/_all.scss";
 @import "Profile/_all.scss";
+@import "Registration/_all.scss"

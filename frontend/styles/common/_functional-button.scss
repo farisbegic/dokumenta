@@ -1,0 +1,32 @@
+.button {
+    text-decoration: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+.md-primary {
+    background-color: $primary-color;
+    color: $background-color;
+    padding: 10px 50px;
+    font-size: 20px;
+  }
+
+.xs-primary {
+  background-color: $primary-color;
+  color: $background-color;
+  display: block;
+  width: auto;
+  border: none;
+  padding: 10px 50px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.xs-primary:hover{
+    background-color: $secondary-color;
+    color: $background-color;
+    transition: .1s ease-in;
+  }
+

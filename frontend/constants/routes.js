@@ -8,8 +8,8 @@ export default {
         name: 'Prijava'
     },
     register: {
-        link: '/register',
-        name: 'Registracija'
+        link: '/registration',
+        name: 'Register'
     },
     profile: {
         link: '/profile',
