@@ -30,6 +30,16 @@ const checkIfDocumentExists = async (document_id) => {
     return document;
 }
 
+const checkIfRequestExists = async (request_id) => {
+    const request = await knex('request').where({request_id}).first();
+
+    if (!request) {
+        throw new Error('Request not found');
+    }
+
+    return request;
+}
+
 const getAllDocuments = async () => {
     return knex('document');
 }
@@ -40,10 +50,17 @@ const getDocumentById = async (document_id) => {
     return knex('document').where({document_id}).first();
 }
 
+const changeRequestStatus = async (request_id) => {
+    const document = await checkIfRequestExists(request_id);
+
+    return knex('request').where({request_id}).update({is_completed: !document.is_completed});
+}
+
 module.exports = {
     getRequestsByUserId,
     saveRequest,
     checkIfDocumentExists,
     getAllDocuments,
-    getDocumentById
+    getDocumentById,
+    changeRequestStatus
 }

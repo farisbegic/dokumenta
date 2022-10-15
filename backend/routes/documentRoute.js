@@ -11,5 +11,7 @@ router.post("/", isAuth, documentController.saveRequest);
 router.get("/", documentController.getAllDocuments);
 // Get document by id
 router.get("/:id", documentController.getDocumentById);
+// Change document status
+router.put("/status/:id", documentController.changeDocumentStatus);
 
 module.exports = router;

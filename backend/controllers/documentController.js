@@ -52,9 +52,22 @@ const getDocumentById = async (req, res) => {
     }
 }
 
+const changeDocumentStatus = async (req, res) => {
+    try {
+        const { id } = req.params;
+        await documentRepository.changeRequestStatus(id);
+        res.status(200).json({
+            message: "Document status changed successfully."
+        });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
 module.exports = {
     getRequestsByUserId,
     saveRequest,
     getAllDocuments,
-    getDocumentById
+    getDocumentById,
+    changeDocumentStatus
 }
