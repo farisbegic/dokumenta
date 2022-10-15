@@ -3,6 +3,7 @@ $secondary-color: #1E84B3;
 $contrast-color: #1b2227;
 $background-color: #fffffa;
 $shadow-color: rgba(0, 0, 0, 0.1);
+$error-color: red;
 
 :export {
   primaryColor: $primary-color;
@@ -10,4 +11,5 @@ $shadow-color: rgba(0, 0, 0, 0.1);
   contrastColor: $contrast-color;
   backgroundColor: $background-color;
   shadowColor: $shadow-color;
+  errorColor: $error-color
 }
