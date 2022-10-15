@@ -1,0 +1,57 @@
+header {
+  @include flex-container(row, space-between, center);
+  background-color: $background-color
+}
+
+header nav {
+  @include flex-container(row, space-between, center);
+}
+
+.nav-logo {
+  font-weight: bold;
+  text-decoration: none;
+  color: $primary-color;
+  cursor: pointer;
+  font-size: 25px;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: $primary-color;
+  padding: 0 25px;
+  cursor: pointer;
+}
+
+.nav-icon {
+  display: none;
+  cursor: pointer;
+  z-index: 5;
+}
+
+@media screen and (max-width: 960px) {
+  header nav {
+    position: fixed;
+    top: 0;
+    left: -110%;
+    width: 100%;
+    height: 100%;
+    @include flex-container(column, center, center);
+    transition: all 0.5s ease;
+  }
+
+  nav.active {
+    background-color: $background-color;
+    left: 0;
+    transition: all 0.5s ease;
+  }
+
+  .nav-item {
+    padding: 25px 0;
+    font-size: 20px;
+    color: $primary-color;
+  }
+
+  .nav-icon {
+    display: block;
+  }
+}
