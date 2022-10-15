@@ -30,8 +30,13 @@ const checkIfDocumentExists = async (document_id) => {
     return document;
 }
 
+const getAllDocuments = async () => {
+    return knex('document');
+}
+
 module.exports = {
     getRequestsByUserId,
     saveRequest,
-    checkIfDocumentExists
+    checkIfDocumentExists,
+    getAllDocuments
 }

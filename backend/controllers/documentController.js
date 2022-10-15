@@ -33,7 +33,17 @@ const saveRequest = async (req, res) => {
     }
 }
 
+const getAllDocuments = async (req, res) => {
+    try {
+        const documents = await documentRepository.getAllDocuments();
+        res.status(200).json(documents);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
 module.exports = {
     getRequestsByUserId,
-    saveRequest
+    saveRequest,
+    getAllDocuments
 }

@@ -7,5 +7,7 @@ const isAuth = require("../middlewares/isAuth")
 router.get("/user", isAuth, documentController.getRequestsByUserId);
 // Save a document
 router.post("/", isAuth, documentController.saveRequest);
+// Get all documents
+router.get("/", documentController.getAllDocuments);
 
 module.exports = router;
