@@ -9,7 +9,7 @@ const findUserByEmail = async (req, res) => {
 }
 
 const updateUser = async (req, res) => {
-    const {user_id} = req.params;
+    const { user_id } = req;
     const {name, surname, phone_number, id_number, municipality_id} = req.body
 
     try {
@@ -31,7 +31,7 @@ const updateUser = async (req, res) => {
 }
 
 const getUserInformation = async (req, res) => {
-    const {user_id} = req.params;
+    const { user_id } = req
 
     try {
         const user = await userRepository.getUserInformation(user_id);

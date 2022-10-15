@@ -28,11 +28,10 @@ const login = async (req, res) => {
             })
         }
 
-        const accessToken = token.signAccessToken(user.id);
+        const accessToken = token.signAccessToken(user.user_id);
 
         res.json({
-            id: user.id,
-            accessToken: accessToken
+            token: accessToken
         })
     } catch (err) {
         res.status(500).json({
@@ -77,8 +76,7 @@ const register = async (req, res) => {
         const accessToken = token.signAccessToken(user_id);
 
         res.json({
-            id: user_id,
-            accessToken: accessToken
+            token: accessToken
         });
 
     } catch (err) {
