@@ -73,5 +73,6 @@ module.exports = {
     checkIfUserExists,
     createUser,
     updateUser,
-    getUserInformation
+    getUserInformation,
+    checkUserById
 }
