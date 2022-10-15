@@ -1,7 +1,7 @@
 export default {
     home: {
         link: '/',
-        name: 'Pocetna'
+        name: 'Početna'
     },
     login: {
         link: '/login',
@@ -9,16 +9,23 @@ export default {
     },
     register: {
         link: '/registration',
-        name: 'Register'
+        name: 'Registracija'
     },
     profile: {
         link: '/profile',
         name: 'Profil'
     },
+
+    request: {
+        link: '/profile/request',
+        name: 'Request'
+    },
+
     settings: {
         link: '/profile/settings',
         name: 'Settings'
     },
+    
     logout: {
         name: 'Odjava'
     }
