@@ -12,6 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/auth", require("./routes/authenticationRoute"));
 app.use("/users", require("./routes/userRoute"));
+app.use("/municipality", require("./routes/municipalityRoute"));
 
 app.listen(port, () => {
     console.log(`Application started on port ${port}`)
