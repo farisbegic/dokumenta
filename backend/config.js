@@ -1,6 +1,7 @@
 module.exports = {
     port: process.env.PORT || 8000,
     environment: process.env.NODE_ENV || 'development',
+    secret_key: process.env.SECRET_KEY || 'secret',
     frontend: {
         base_url: process.env.FRONTEND_BASE_URL || 'http://localhost:3000',
     },
