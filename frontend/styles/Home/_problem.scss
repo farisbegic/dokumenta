@@ -1,0 +1,21 @@
+.problem-wrap{
+  background:linear-gradient($background-color,transparent,$background-color), url("../../public/problems-bg.jpg");
+  background-size: cover;
+  margin-top: 100px;
+  padding: 100px 0;
+}
+
+.problem{
+  @include flex-container(column, space-between, center);
+  color: $primary-color;
+}
+
+.problem h1{
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.problem p{
+  text-align: justify;
+  line-height: 35px;
+}

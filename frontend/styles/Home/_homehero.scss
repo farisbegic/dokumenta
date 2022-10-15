@@ -1,0 +1,25 @@
+.home-hero-wrap{
+  background-image: url("../../public/documents-bg.jpg");
+  background-size: cover;
+  border-radius: 20px;
+  box-shadow: 5px 5px 10px $shadow-color;
+}
+
+.home-hero{
+  background-color: rgba(30, 132, 179, 0.5);
+  border-radius: 20px;
+  @include flex-container(row,space-between, center);
+  padding: 50px 100px;
+}
+
+.home-hero-msg{
+  padding-bottom: 20%;
+}
+
+.home-hero-btn{
+  padding-top: 20%;
+}
+
+.home-hero h1{
+  color: $background-color;
+}

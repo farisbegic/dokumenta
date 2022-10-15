@@ -1,9 +1,28 @@
 header {
   @include flex-container(row, space-between, center);
-  background-color: $background-color
+  background-color: $background-color;
+
+}
+
+.is-sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  box-shadow: 0 2px 24px 0 rgb(0 0 0 / 15%);
+  background-color: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: saturate(180%) blur(20px);
+  animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 header nav {
+  @include flex-container(row, space-between, center);
+}
+
+.head-wrap{
   @include flex-container(row, space-between, center);
 }
 
