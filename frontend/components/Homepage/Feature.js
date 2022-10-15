@@ -7,7 +7,7 @@ const Feature = () => {
         <div className="feature">
             <h1 className="subheading">Funkcionalnosti</h1>
             <div className="featurecard">
-                <Card text="feature1" icon={<FaCog size="23"/>}/>
+                <Card text="feature1" icon={<FaCog size="24"/>}/>
                 <Card text="feature2"/>
                 <Card text="feature3"/>
                 <Card text="feature4"/>
