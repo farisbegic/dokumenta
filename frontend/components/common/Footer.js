@@ -8,6 +8,7 @@ const Footer = () => {
             <Link href={routes.home} passHref>
                 <a className="foot-logo">Dokumenta</a>
             </Link>
+            <p className="paragraph">©2022 Dokumenta. All rights reserved</p>
         </div>
     );
 };
