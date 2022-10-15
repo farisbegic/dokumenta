@@ -29,8 +29,21 @@ const createUser = async (user) => {
 
     return id;
 }
+
+const updateUser = async (user) => {
+    const id = await knex('users').where({ user_id: user.user_id }).update(user, 'user_id');
+
+    if (!id) {
+        throw new Error('User not updated');
+    }
+
+    return id;
+}
+
+
 module.exports = {
     findUserByEmail,
     checkIfUserExists,
-    createUser
+    createUser,
+    updateUser
 }
