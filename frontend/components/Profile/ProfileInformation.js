@@ -11,7 +11,7 @@ const ProfileInformation = () => {
                         <p className="paragraph">Dobrodošli,</p>
                         <h1 className="heading">Irfan Parić</h1>
                     </div>
-                    <Button link="/" name={<FaCog size="24"/>} size="sm-secondary"/>
+                    <Button link="/profile/settings" name={<FaCog size="24"/>} size="sm-secondary"/>
                 </div>
             </div>
         </div>

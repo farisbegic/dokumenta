@@ -4,7 +4,6 @@ const authenticationController = require("../controllers/authenticationControlle
 
 // Login
 router.post("/login", authenticationController.login)
-
 // Register
 router.post("/register", authenticationController.register)
 

@@ -1,65 +1,68 @@
-import React, {useState} from 'react';
+import React, {useContext} from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { useFormik } from "formik";
+import {useFormik} from "formik";
 import * as Yup from "yup";
 import FunctionalButton from '../common/FunctionalButton';
+import {AuthenticationContext} from "../../contexts/AuthenticationContextProvider";
+import authentication from "../../services/authentication";
 
 
 const LoginForm = () => {
-    const onSubmit=(values) =>{
-        console.log(values);
+    const { setResponse } = useContext(AuthenticationContext);
+
+    const handleLogin = async (values) => {
+        const response = await authentication.login(values)
+
+        if (response.status === 200) {
+            setResponse(response.data);
+        }
     }
-      const formik = useFormik({
-        initialValues: {
-          email: "",
-          password: "",
-        },
 
-        validationSchema : Yup.object().shape({
-            password: Yup.string()
-              .min(8, "Password mora sadržavati najmanje 8 karaktera")
-              .required("Password je obavezno polje"),
-            email: Yup.string()
-              .email("Netačna email adresa")
-              .required("Email je obavezno polje"),
-          }),
+    const initialValues = {
+        email: "",
+        password: "",
+    }
 
-        onSubmit,
-        
-      });
+    const validationSchema = Yup.object({
+        email: Yup.string()
+            .email("Netačna email adresa")
+            .required("Email je obavezno polje"),
+    });
 
-      return (
+    const formik = useFormik({
+        initialValues,
+        validationSchema,
+        onSubmit: handleLogin,
+    });
+
+    return (
         <>
-         <Box
-      component="form"
-      sx={{
-        '& .MuiTextField-root': { m:1, width: '80ch' },
-      }}
-      >
-        
-        <div className='container'>
-        <h1>Prijava</h1>
-        <form className='form' onSubmit={formik.handleSubmit}>
-            <TextField id="email" name='email' label="Unesite Vaš email" variant="outlined" onBlur={formik.handleBlur}
-             value={formik.values.email} onChange={formik.handleChange} />
-             {formik.errors.email && formik.touched.email ? (
-              <p className='error-message'>{formik.errors.email}</p>
-            ) : null}
-            <TextField id="password" type='password' name='password' label="Password" variant="outlined" onBlur={formik.handleBlur}
-             value={formik.values.password} onChange={formik.handleChange} />
-             {formik.errors.password && formik.touched.password ? (
-              <p className='error-message'>{formik.errors.password}</p>
-            ) : null}
-           
-        </form>
-        <FunctionalButton name="Prijavi se" size="xs-primary"  />
-        </div>
-        </Box>
-        
+            <Box
+                sx={{
+                    '& .MuiTextField-root': {m: 1},
+                }}
+            >
+                <div className='container'>
+                    <h1>Prijava</h1>
+                    <form className='form' onSubmit={formik.handleSubmit}>
+                        <TextField id="email" name='email' label="Unesite Vaš email" variant="outlined"
+                                   value={formik.values.email}
+                                   onChange={formik.handleChange}
+                                   error={formik.touched.email && Boolean(formik.errors.email)}
+                                   helperText={formik.touched.email && formik.errors.email}
+                        />
+                        <TextField id="password" type='password' name='password' label="Password" variant="outlined"
+                                   value={formik.values.password}
+                                   onChange={formik.handleChange}
+                                   error={formik.touched.password && Boolean(formik.errors.password)}
+                                   helperText={formik.touched.password && formik.errors.password}
+                        />
+                        <FunctionalButton name="Prijavi se" size="xs-primary" />
+                    </form>
+                </div>
+            </Box>
         </>
-
-        
     )
 };
 
