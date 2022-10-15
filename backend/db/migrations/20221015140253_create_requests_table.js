@@ -9,6 +9,7 @@ exports.up = function (knex) {
         table.string('phone');
         table.boolean('is_urgent');
         table.boolean('is_paid');
+        table.boolean('is_completed');
         table.bigInteger('document').references('document_id').inTable('document');
         table.bigInteger('user').references('user_id').inTable('users');
         table.timestamps(true, true);

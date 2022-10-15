@@ -9,6 +9,7 @@ exports.seed = async function (knex) {
             phone: '387 62 200 199',
             is_urgent: false,
             is_paid: false,
+            is_completed: false,
             document: Math.floor(Math.random() * 7) + 1,
             user: Math.floor(Math.random() * 3) + 1
         },
@@ -19,6 +20,7 @@ exports.seed = async function (knex) {
             phone: '387 62 123 199',
             is_urgent: false,
             is_paid: false,
+            is_completed: false,
             document: Math.floor(Math.random() * 7) + 1,
             user: Math.floor(Math.random() * 3) + 1
         },
@@ -29,6 +31,7 @@ exports.seed = async function (knex) {
             phone: '387 62 200 199',
             is_urgent: false,
             is_paid: false,
+            is_completed: false,
             document: Math.floor(Math.random() * 7) + 1,
             user: Math.floor(Math.random() * 3) + 1
         },
@@ -39,6 +42,7 @@ exports.seed = async function (knex) {
             phone: '387 62 200 909',
             is_urgent: false,
             is_paid: false,
+            is_completed: false,
             document: Math.floor(Math.random() * 7) + 1,
             user: Math.floor(Math.random() * 3) + 1
         },
@@ -49,6 +53,7 @@ exports.seed = async function (knex) {
             phone: '387 62 980 199',
             is_urgent: false,
             is_paid: false,
+            is_completed: false,
             document: Math.floor(Math.random() * 7) + 1,
             user: Math.floor(Math.random() * 3) + 1
         },
@@ -59,6 +64,7 @@ exports.seed = async function (knex) {
             phone: '387 61 200 199',
             is_urgent: false,
             is_paid: false,
+            is_completed: false,
             document: Math.floor(Math.random() * 7) + 1,
             user: Math.floor(Math.random() * 3) + 1
         },
@@ -69,6 +75,7 @@ exports.seed = async function (knex) {
             phone: '387 62 200 199',
             is_urgent: false,
             is_paid: false,
+            is_completed: false,
             document: Math.floor(Math.random() * 7) + 1,
             user: Math.floor(Math.random() * 3) + 1
         },
