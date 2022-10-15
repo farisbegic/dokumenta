@@ -1,0 +1,9 @@
+.table{
+  @include flex-container(column, space-between, start);
+  padding-top: 50px;
+
+}
+
+.table-button{
+  margin-bottom: 20px;
+}

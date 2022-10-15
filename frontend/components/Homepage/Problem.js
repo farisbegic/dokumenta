@@ -6,7 +6,8 @@ const Problem = () => {
         <div className="problem-wrap">
             <div className="wrapper problem">
                 <h1 className="subheading">Problem</h1>
-                <p className="paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet culpa delectus deserunt harum ipsa laborum possimus, quasi reprehenderit sequi sit tenetur, veritatis. A labore obcaecati quasi quisquam rem vero! Sequi? Lorem ipsum dolor sit amet, consectetur adipisicing elit. A beatae consequatur doloribus eaque esse eum fugiat impedit ipsum, magni nam non nostrum provident reiciendis suscipit tempore ut vel vitae voluptatibus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto beatae, dolore dolores earum eligendi eos et explicabo, mollitia necessitatibus, numquam obcaecati perspiciatis quos ratione rem. Illo iusto officiis pariatur.</p>
+                <p className="paragraph">Sigurno Vam se desilo da izgubite nekoliko sati čekajući u redu za samo nekoliko papira ili potvrda. Koliko puta niste bili sigurni na koji ulaz treba da idete, na kojem šalteru da preuzmete dokument ili da li su uposlenici trenutno na pauzi? Ukoliko ste se pronašli u nekim od navedenih situacija, onda je ovo aplikacija za Vas! Smanjimo bespotrebne gužve i redove koristeći aplikaciju Dokumenta. Budite i Vi dio unaprjeđenja života u svojoj lokalnoj zajednici.
+                </p>
             </div>
         </div>
     );
