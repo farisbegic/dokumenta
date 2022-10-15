@@ -1,0 +1,22 @@
+.problem-wrap{
+  background-image: url("../../public/problems-bg.jpg");
+  background-size: cover;
+  box-shadow: inset 0 10px 10px $shadow-color;
+  margin-top: 100px;
+  padding: 50px 0;
+}
+
+.problem{
+  @include flex-container(column, space-between, center);
+  color: $contrast-color;
+}
+
+.problem h1{
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.problem p{
+  text-align: justify;
+  line-height: 35px;
+}

@@ -3,14 +3,33 @@ import Link from 'next/link';
 import {IoMdClose, IoMdMenu} from 'react-icons/io';
 import routes from '../../constants/routes'
 import {primaryColor} from '../../styles/colors.module.scss'
+import {useEffect} from "react";
 
 const Header = () => {
     const [click, setClick] = useState(false);
     const handleClick = () => setClick(!click);
+    const [sticky, setSticky] = useState("");
+
+    useEffect(() => {
+        console.log("hello");
+        window.addEventListener("scroll", isSticky);
+        return () => {
+            window.removeEventListener("scroll", isSticky);
+        };
+    }, []);
+
+    const isSticky = () => {
+        const scrollTop = window.scrollY;
+        const stickyClass = scrollTop >= 250 ? "is-sticky" : "";
+        setSticky(stickyClass);
+        console.log(stickyClass);
+    };
+
+    const classes = `header-section d-none d-xl-block ${sticky}`;
 
     return (
-        <div className="wrapper">
-            <header>
+        <header className={classes}>
+            <div className="wrapper head-wrap">
                 <Link href={routes.home} passHref>
                     <a className="nav-logo">Dokumenta</a>
                 </Link>
@@ -30,8 +49,8 @@ const Header = () => {
                 <div className="nav-icon" onClick={handleClick}>
                     {!click ? (<IoMdMenu size="25px" color={primaryColor}/>) : (<IoMdClose size="25px" color={primaryColor}/>)}
                 </div>
-            </header>
-        </div>
+            </div>
+        </header>
     );
 };
 
