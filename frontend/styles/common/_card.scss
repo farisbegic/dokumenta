@@ -16,4 +16,5 @@
 .card:hover{
   background-color: $primary-color;
   color: $background-color;
+  transition: .2s ease-in;
 }
