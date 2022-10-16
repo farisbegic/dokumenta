@@ -62,7 +62,7 @@ const register = async (req, res) => {
 
         const role = roles.find(role => role.name === roleConstants.user).role_id;
 
-        const { user_id } = await userRepository.createUser({
+        const user = await userRepository.createUser({
             name,
             surname,
             email,
@@ -73,7 +73,7 @@ const register = async (req, res) => {
             municipality
         });
 
-        const accessToken = token.signAccessToken(user_id);
+        const accessToken = token.signAccessToken(user[0].user_id);
 
         res.json({
             token: accessToken
