@@ -25,7 +25,6 @@ export default {
         link: '/profile/settings',
         name: 'Settings'
     },
-    
     logout: {
         name: 'Odjava'
     }
