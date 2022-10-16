@@ -49,6 +49,12 @@
   padding: 5px 0;
 }
 
+@media screen and (max-width: 700px) {
+  .heading {
+    font-size: 38px;
+  }
+}
+
 // Import styles
 
 @import "common/_all.scss";

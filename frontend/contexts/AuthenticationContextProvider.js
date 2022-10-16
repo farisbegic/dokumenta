@@ -1,8 +1,10 @@
 import React, {createContext, useEffect, useState} from 'react';
+import {useRouter} from "next/router";
 
 export const AuthenticationContext = createContext("");
 
 const AuthenticationContextProvider = (props) => {
+    const router = useRouter();
     const [user, setUser] = useState("");
     const [accessToken, setAccessToken] = useState("");
 
@@ -16,6 +18,7 @@ const AuthenticationContextProvider = (props) => {
         localStorage.removeItem("token")
         setUser("")
         setAccessToken("")
+        router.push("/");
     }
 
     useEffect(() => {

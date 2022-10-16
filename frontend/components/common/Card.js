@@ -4,7 +4,7 @@ const Card = ({icon, text}) => {
     return (
         <div className="card">
             {icon && icon}
-            <p className="paragraph">{text}</p>
+            <p className="subheading" style={{textAlign: 'center'}}>{text}</p>
         </div>
     );
 };

@@ -1,6 +1,5 @@
 .request {
   @include flex-container(column, space-between, center);
-  height: 550px;
 }
 
 .request h1{

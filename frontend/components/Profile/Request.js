@@ -49,7 +49,7 @@ const Request = () => {
             <div className="wrapper request">
                 <h1 className="subheading">Podnesite novi zahtjev</h1>
                 <Box sx={{ width: '100%' }}>
-                    <Stepper activeStep={activeStep}>
+                    <Stepper sx={{mt: 5}} activeStep={activeStep}>
                         {steps.map((label, index) => {
                             const stepProps = {};
                             const labelProps = {};

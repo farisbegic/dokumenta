@@ -111,6 +111,8 @@ const RequestForm = () => {
                         }
                         label="Urgentno" />
 
+                    <input type="file" style={{margin: '10px 0'}}/>
+
                     <FunctionalButton name="Registruj se" size="xs-primary"/>
                 </form>
             </div>

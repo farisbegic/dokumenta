@@ -8,12 +8,12 @@ import {GiEcology} from "react-icons/gi";
 const Feature = () => {
     return (
         <div className="feature">
-            <h1 className="subheading">Funkcionalnosti</h1>
+            <h1 className="heading">Funkcionalnosti</h1>
             <div className="featurecard">
-                <Card text="Ušteda vremena" icon={<BiTimer size="80"/>}/>
-                <Card text="Zahtjev dokumenata" icon={<HiOutlineDocument size="80"/>}/>
-                <Card text="Fleksibilnost" icon={<HiOutlineCursorClick size={"80"}/>}/>
-                <Card text="Eko zaštita" icon={<GiEcology size={"80"}/>}/>
+                <Card text="Ušteda vremena" icon={<BiTimer size="120"/>}/>
+                <Card text="Zahtjev dokumenata" icon={<HiOutlineDocument size="120"/>}/>
+                <Card text="Fleksibilnost" icon={<HiOutlineCursorClick size="120"/>}/>
+                <Card text="Eko zaštita" icon={<GiEcology size="120"/>}/>
             </div>
         </div>
     );
