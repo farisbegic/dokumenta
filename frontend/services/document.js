@@ -7,6 +7,9 @@ const authentication = {
     },
     async getDocuments() {
         return await API.get(DOCUMENT);
+    },
+    async submitRequest(payload) {
+        return await API.post(DOCUMENT, payload);
     }
 }
 
