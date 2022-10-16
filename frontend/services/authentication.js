@@ -3,6 +3,7 @@ import { LOGIN, REGISTER } from '../constants/endpoints';
 
 const authentication = {
     async register(payload) {
+        console.log(payload);
         return await API.post(REGISTER, payload)
     },
     async login(payload) {
