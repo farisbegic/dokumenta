@@ -9,13 +9,14 @@ import documentService from '../../services/document';
 
 const RequestForm = () => {
     const handleRequest = async (values) => {
-        console.log(values);
         const response = await documentService.submitRequest({
             name: values.name,
             surname: values.surname,
             id_number: values.idNumber,
             phone: values.phone,
             is_urgent: values.isUrgent,
+            is_paid: false,
+            is_completed: false,
             document: 1
         });
 
