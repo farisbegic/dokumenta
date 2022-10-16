@@ -8,6 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Button from "../common/Button";
+import routes from "../../constants/routes";
 
 const columns = [
     { id: 'document-name', label: 'Naziv dokumenta', align: 'left'},
@@ -38,7 +39,7 @@ const RequestTable = () => {
     return (
         <div className="table">
             <div className="table-button">
-                <Button name="Novi zahtjev +" link="/" size="sm-primary" />
+                <Button name="Novi zahtjev +" link={routes.request.link} size="sm-primary" />
             </div>
         <Paper sx={{ width: '100%', overflow: 'hidden' }}>
             <TableContainer sx={{ maxHeight: 440 }}>

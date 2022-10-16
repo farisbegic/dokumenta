@@ -1,5 +1,5 @@
 .table{
-  @include flex-container(column, space-between, start);
+  @include flex-container(column, space-between, flex-start);
   padding-top: 50px;
 
 }
