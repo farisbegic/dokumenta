@@ -7,7 +7,6 @@ const AuthenticationContextProvider = (props) => {
     const [accessToken, setAccessToken] = useState("");
 
     const setResponse = (response) => {
-        console.log(response);
         localStorage.setItem("token", response.token)
         setAccessToken(response.token)
     }
