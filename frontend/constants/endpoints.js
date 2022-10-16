@@ -4,6 +4,7 @@ const USER_INFORMATION = "/users/information";
 const USER_REQUESTS = "/document/user";
 const USER = "/users";
 const DOCUMENT = "/document";
+const MUNICIPALITY = "/municipality";
 
 export {
     REGISTER,
@@ -11,5 +12,6 @@ export {
     USER_INFORMATION,
     USER_REQUESTS,
     USER,
-    DOCUMENT
+    DOCUMENT,
+    MUNICIPALITY
 }

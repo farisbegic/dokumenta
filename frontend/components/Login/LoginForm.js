@@ -10,12 +10,20 @@ import authentication from "../../services/authentication";
 
 const LoginForm = () => {
     const { setResponse } = useContext(AuthenticationContext);
+    const [error, setError] = React.useState(false);
 
     const handleLogin = async (values) => {
-        const response = await authentication.login(values)
+        try {
+            const response = await authentication.login(values)
 
-        if (response.status === 200) {
-            setResponse(response.data);
+            console.log(response);
+
+            if (response.status === 200) {
+                setResponse(response.data);
+                setError(false);
+            }
+        } catch (e) {
+            setError(true);
         }
     }
 
@@ -40,13 +48,13 @@ const LoginForm = () => {
         <>
             <Box
                 sx={{
-                    '& .MuiTextField-root': {m: 1},
+                    '& .MuiTextField-root': {my: 1, width: '100%'},
                 }}
             >
                 <div className='container'>
                     <h1>Prijava</h1>
                     <form className='form' onSubmit={formik.handleSubmit}>
-                        <TextField id="email" name='email' label="Unesite Vaš email" variant="outlined"
+                        <TextField id="email" name='email' label="Email" variant="outlined"
                                    value={formik.values.email}
                                    onChange={formik.handleChange}
                                    error={formik.touched.email && Boolean(formik.errors.email)}
@@ -58,6 +66,7 @@ const LoginForm = () => {
                                    error={formik.touched.password && Boolean(formik.errors.password)}
                                    helperText={formik.touched.password && formik.errors.password}
                         />
+                        { error ? <p className='error-message'>Pogrešan email ili password</p> : null }
                         <FunctionalButton name="Prijavi se" size="xs-primary" />
                     </form>
                 </div>

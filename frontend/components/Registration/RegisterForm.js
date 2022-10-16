@@ -1,33 +1,37 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import Box from '@mui/material/Box';
-import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
 import {useFormik} from "formik";
 import * as Yup from "yup";
 import municipalities from '../../constants/municipalities';
 import FunctionalButton from '../common/FunctionalButton';
 import authentication from "../../services/authentication";
 import {AuthenticationContext} from "../../contexts/AuthenticationContextProvider";
+import Autocomplete from "@mui/material/Autocomplete";
 
 const RegisterForm = () => {
     const { setResponse } = useContext(AuthenticationContext);
+    const [error, setError] = useState(false);
 
     const handleRegister = async (values) => {
-        const response = await authentication.register({
-            name: values.firstName,
-            surname: values.lastName,
-            email: values.email,
-            password: values.password,
-            confirm_password: values.passwordConfirmation,
-            id_number: values.idNumber,
-            phone: values.phone,
-            municipality: 1,
-        })
+        try {
+            const response = await authentication.register({
+                name: values.firstName,
+                surname: values.lastName,
+                email: values.email,
+                password: values.password,
+                confirm_password: values.passwordConfirmation,
+                id_number: values.idNumber,
+                phone: values.phone,
+                municipality: 1,
+            })
 
-        if (response.status === 200) {
-            setResponse(response.data);
+            if (response.status === 200) {
+                setResponse(response.data);
+                setError(false);
+            }
+        } catch (e) {
+            setError(true);
         }
     }
 
@@ -69,7 +73,7 @@ const RegisterForm = () => {
     return (
         <Box
             sx={{
-                '& .MuiTextField-root': {m: 1},
+                '& .MuiTextField-root': {my: 1, width: '100%' },
             }}
         >
             <div className='container'>
@@ -113,23 +117,16 @@ const RegisterForm = () => {
                         <p className='error-message'>{formik.errors.passwordConfirmation}</p>
                     ) : null}
 
-                    <div className='input-select'>
-                        <InputLabel id="demo-simple-select-standard-label">Izaberite opštinu</InputLabel>
-                        <Select
-                            labelId="demo-simple-select-standard-label"
-                            id="municipality"
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            label="Opština"
-                            name='municipality'
-                            value={formik.values.municipality}
-                        >
-                            {municipalities.map((mun, index) => {
-                                return <MenuItem key={index} value={mun.value}>{mun.name}</MenuItem>
-                            })}
-
-                        </Select>
-                    </div>
+                    <Autocomplete
+                        value={municipalities[0]}
+                        id="municipality"
+                        name='municipality'
+                        onChange={formik.handleChange}
+                        label="Opština"
+                        disablePortal
+                        options={municipalities}
+                        renderInput={(params) => <TextField {...params} label="Općine" />}
+                    />
 
                     <TextField id="idNumber" name='idNumber' label="Unesite broj Vaše lične karte"
                                variant="outlined" onBlur={formik.handleBlur}
@@ -137,6 +134,8 @@ const RegisterForm = () => {
                     {formik.errors.idNumber && formik.touched.idNumber ? (
                         <p className='error-message'>{formik.errors.idNumber}</p>
                     ) : null}
+
+                    { error ? <p className='error-message'>Greška prilikom registracije</p> : null }
                     <FunctionalButton name="Registruj se" size="xs-primary"/>
                 </form>
             </div>

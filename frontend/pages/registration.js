@@ -1,7 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import RegisterForm from '../components/Registration/RegisterForm';
 
 const Header = () => {
+
+    useEffect(() => {
+
+    }, []);
 
     return (
         <RegisterForm />
