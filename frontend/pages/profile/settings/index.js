@@ -1,145 +1,115 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
-import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import { useFormik } from "formik";
+import {useFormik} from "formik";
 import * as Yup from "yup";
-import municipalities from '../../../constants/municipalities';
 import FunctionalButton from '../../../components/common/FunctionalButton';
+import userService from '../../../services/user';
 
 export default function Settings() {
+    const [user, setUser] = useState('');
+    const [loading, setLoading] = useState(false);
 
-   
-    const[firstName, setName]= useState("Amar");
-    const[lastName, setLastName]= useState("Sose");
-    const[email, setEmail]= useState("amar.sose@hotmail.com");
-    const[password, setPassword]= useState("amar123");
-    const[passwordConfirmation, setPasswordConfirmation]= useState("amar123");
-    const[municipality, setMunicipality]= useState("Centar");
-    const[idNumber, setIdNumber]= useState("15fahbas");
-    
-        const onSubmit=(values) =>{
-            console.log(values);
+    useEffect(() => {
+        async function fetchData() {
+            const response = await userService.getUserInformation();
+            setUser(response.data);
         }
+        fetchData();
+        setLoading(true);
+    }, [])
 
-        const firstNameHandler=(event) =>{
-            setName(event.target.value);
+    const onSubmit = async (values) => {
+        const response = await userService.updateUser({
+            name: values.firstName,
+            surname: values.lastName,
+            phone: values.phone,
+            id_number: values.idNumber
+        });
+
+        if (response.status === 200) {
+            alert('User updated successfully');
         }
-        const lastNameHandler=(event) =>{
-            setLastName(event.target.value);
-        }
-        const emailHandler=(event) =>{
-            setEmail(event.target.value);
-        }
-        const PasswordHandler=(event) =>{
-            setPassword(event.target.value);
-        }
-        const ConfirmHandler=(event) =>{
-            setPasswordConfirmation(event.target.value);
-        }
-        const municipalityHandler=(event) =>{
-            setMunicipality(event.target.value);
-        }
-        const IdNumberHandler=(event) =>{
-            setIdNumber(event.target.value);
-        }
-          const formik = useFormik({
-            initialValues: {
-              firstName: "",
-              lastName: "",
-              email: "",
-              password: "",
-              passwordConfirmation: "",
-              idNumber: ""
-            },
-            validationSchema : Yup.object().shape({
-                firstName: Yup.string().required("Ime je obavezno polje"),
-                lastName: Yup.string().required("Prezime je obavezno polje"),
-                password: Yup.string()
-                  .min(8, "Password mora sadržavati najmanje 8 karaktera")
-                  .required("Password je obavezno polje"),
-                email: Yup.string()
-                  .email("Netačna email adresa")
-                  .required("Email je obavezno polje"),
-                idNumber: Yup.string()
-                .min(9,"Broj lične karte mora sadržavati 9 karaktera").required("Broj lične karte je obavezno polje"),
-                passwordConfirmation: Yup.string()
-                .oneOf([Yup.ref('password'), null], 'Password se ne poklapa')
-              }),
-            onSubmit,
-            
-          });
-    
-         
-          
-        return (
-            <>
-             <Box
-          component="form"
-          sx={{
-            '& .MuiTextField-root': { m:1, width: '80ch' },
-          }}
-          >
-            <div className='container'>
-              <h1>Uredi profil</h1>
-            <form className='form' onSubmit={formik.handleSubmit}>
-                <TextField id="firstName" name='firstName' label="Unesite Vaše ime"  variant="outlined" 
-                 value={firstName} onChange={firstNameHandler}  />
-                 {formik.errors.firstName && formik.touched.firstName ? (
-                  <p className='error-message'>{formik.errors.firstName}</p>
-                ) : null}
-                <TextField id="lastName" name='lastName' label="Unesite Vaše prezime" variant="outlined" 
-                 value={lastName} onChange={lastNameHandler} />
-                 {formik.errors.lastName && formik.touched.lastName ? (
-                  <p className='error-message'>{formik.errors.lastName}</p>
-                ) : null}
-                <TextField id="email" name='email' label="Unesite Vaš email" variant="outlined" 
-                 value={email} onChange={emailHandler} />
-                 {formik.errors.email && formik.touched.email ? (
-                  <p className='error-message'>{formik.errors.email}</p>
-                ) : null}
-                <TextField id="password" type='password' name='password' label="Password" variant="outlined" 
-                 value={password} onChange={PasswordHandler} />
-                 {formik.errors.password && formik.touched.password ? (
-                  <p className='error-message'>{formik.errors.password}</p>
-                ) : null}
-                <TextField id="passwordCondirmation" type='password' name='passwordConfirmation' label="Potvrdite password" variant="outlined"
-                 value={passwordConfirmation} onChange={ConfirmHandler} />
-                 {formik.errors.passwordConfirmation && formik.touched.passwordConfirmation ? (
-                  <p className='error-message'>{formik.errors.passwordConfirmation}</p>
-                ) : null}
-                
-                <div className='input-select'>
-                <InputLabel id="demo-simple-select-standard-label">Izaberite opštinu</InputLabel>
-            <Select
-              labelId="demo-simple-select-standard-label"
-              id="municipality"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              label="Opština"
-              name='municipality'
-              value={municipality}
-            >
-              { municipalities.map((mun, index) => {
-                return <MenuItem key={index} value={mun.value}>{mun.name}</MenuItem>
-              })}
-              
-            </Select>
-                </div>
-    
-                <TextField id="idNumber" name='idNumber' label="Unesite broj Vaše lične karte" variant="outlined" 
-                 value={idNumber} onChange={IdNumberHandler}/>  
-                 {formik.errors.idNumber && formik.touched.idNumber ? (
-                  <p className='error-message'>{formik.errors.idNumber}</p>
-                ) : null}
-    
-            </form>
-            <FunctionalButton name="Spasi izmjene" size="xs-primary"  />
-            </div>
-            </Box>
-            
-            </>
+    }
+
+    const initialValues = {
+        firstName: user.name,
+        lastName: user.surname,
+        phone: user.phone,
+        municipality: user.municipality,
+        idNumber: user.id_number
+    }
+
+    const validationSchema = Yup.object().shape({
+        firstName: Yup.string().required("Ime je obavezno polje"),
+        lastName: Yup.string().required("Prezime je obavezno polje"),
+        phone: Yup.string().required("Broj telefona je obavezno polje"),
+        idNumber: Yup.string().min(9, "Broj lične karte mora sadržavati 9 karaktera").required("Broj lične karte je obavezno polje")
+    })
+
+    const formik = useFormik({
+        initialValues,
+        validationSchema,
+        onSubmit,
+    });
+
+
+    return (
+        <>
+            { loading && (
+                <Box
+                    sx={{
+                        '& .MuiTextField-root': {m: 1},
+                    }}
+                >
+                    <div className='container'>
+                        <h1>Uredi profil</h1>
+                        <form className='form' onSubmit={formik.handleSubmit}>
+                            <TextField
+                                fullWidth
+                                id="firstName"
+                                name="firstName"
+                                label="Ime"
+                                value={formik.values.firstName}
+                                onChange={formik.handleChange}
+                                error={formik.touched.firstName && Boolean(formik.errors.firstName)}
+                                helperText={formik.touched.firstName && formik.errors.firstName}
+                            />
+                            <TextField
+                                fullWidth
+                                id="lastName"
+                                name="lastName"
+                                label="Prezime"
+                                value={formik.values.lastName}
+                                onChange={formik.handleChange}
+                                error={formik.touched.lastName && Boolean(formik.errors.lastName)}
+                                helperText={formik.touched.lastName && formik.errors.lastName}
+                            />
+                            <TextField
+                                fullWidth
+                                id="phone"
+                                name="phone"
+                                label="Telefon"
+                                value={formik.values.phone}
+                                onChange={formik.handleChange}
+                                error={formik.touched.phone && Boolean(formik.errors.phone)}
+                                helperText={formik.touched.phone && formik.errors.phone}
+                            />
+                            <TextField
+                                fullWidth
+                                id="idNumber"
+                                name="idNumber"
+                                label="Broj lične"
+                                value={formik.values.idNumber}
+                                onChange={formik.handleChange}
+                                error={formik.touched.idNumber && Boolean(formik.errors.idNumber)}
+                                helperText={formik.touched.idNumber && formik.errors.idNumber}
+                            />
+                            <FunctionalButton name="Spasi izmjene" size="xs-primary"/>
+                        </form>
+                    </div>
+                </Box>
+            )}
+        </>
     )
 }
