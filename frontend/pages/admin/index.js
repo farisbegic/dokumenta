@@ -1,5 +1,5 @@
 import React from 'react';
-import AdminTable from "../../components/Admin/AdminTable";
+import AdminTable from "../../components/admin/AdminTable";
 import ProcessTable from '../../components/admin/ProcessTable';
 
 

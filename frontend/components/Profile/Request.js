@@ -1,15 +1,27 @@
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import documentService from '../../services/document';
+import RequestForm from "./RequestForm";
 
 const steps = ['Odaberite dokument', 'Spasite prijavu', 'Pošaljite zahtjev'];
+const options = [
+    "Odobrenje za građenje",
+    "Uklanjanje gradjevine",
+    "Odobrenje za istrazne radove",
+    "Izvod iz prostorno-planske dokumentacije",
+    "Uvjerenje o činjenicama o kojima se vodi /ne vodi službena evidencija",
+    "Produženje urbanističke saglasnosti / odobrenja za građenje",
+    "Urbanistička saglasnost ili lokacijska informacija"
+]
+
 
 const Request = () => {
     const [value, setValue] = useState('');
@@ -29,6 +41,9 @@ const Request = () => {
         setActiveStep(0);
     };
 
+    useEffect(() => {
+        documentService.getDocuments().then(result => console.log(result))
+    }, [])
     return (
         <>
             <div className="wrapper request">
@@ -57,24 +72,24 @@ const Request = () => {
                         </React.Fragment>
                     ) : (
                         <React.Fragment>
-                            <Typography sx={{ display:'flex', justifyContent:'center', mt: 5, mb: 1 }}>
+                            <div>
                                 {activeStep===0 && <div className="request-step">
                                     <p className="paragraph">Odaberite željeni dokument:</p>
                                     <Autocomplete
-                                value={value}
-                                onChange={(event, newValue) => {
-                                    setValue(newValue);
-                                }}
-                                inputValue={document}
-                                onInputChange={(event, newInputValue) => {
-                                    setDocument(newInputValue);
-                                }}
-                                disablePortal
-                                id="combo-box-demo"
-                                options={top100Films}
-                                sx={{ width: 300 }}
-                                renderInput={(params) => <TextField {...params} label="Dokument" />}
-                                /></div>}
+                                        value={value}
+                                        onChange={(event, newValue) => {
+                                            setValue(newValue);
+                                        }}
+                                        inputValue={document}
+                                        onInputChange={(event, newInputValue) => {
+                                            setDocument(newInputValue);
+                                        }}
+                                        disablePortal
+                                        id="combo-box-demo"
+                                        options={options}
+                                        sx={{ width: 300 }}
+                                        renderInput={(params) => <TextField {...params} label="Dokument" />}
+                                    /></div>}
                                 {activeStep===1 && document &&
                                     <div className="request-step">
                                         <p className="paragraph">Preuzmite odabrani dokument:</p>
@@ -82,8 +97,8 @@ const Request = () => {
                                     </div>
                                 }
                                 {activeStep===2 && downloaded &&
-                                    <div className="request-step">
-                                        <form action="">cao cao</form>
+                                    <div className="request-form">
+                                        <RequestForm />
                                     </div>
                                 }
                                 {activeStep===2 && !downloaded &&
@@ -91,7 +106,7 @@ const Request = () => {
                                         <p>Niste preuzeli dokument!</p>
                                     </div>
                                 }
-                            </Typography>
+                            </div>
                             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                                 <Button
                                     color="inherit"
@@ -105,13 +120,11 @@ const Request = () => {
                                 <Button disabled={document===""} onClick={handleNext} >
                                     {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                                 </Button>
-
                             </Box>
                         </React.Fragment>
                     )}
                 </Box>
             </div>
-
         </>
     );
 
