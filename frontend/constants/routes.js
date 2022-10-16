@@ -26,6 +26,11 @@ export default {
         name: 'Settings'
     },
     
+    admin: {
+        link: '/admin',
+        name: 'Admin'
+        },
+        
     logout: {
         name: 'Odjava'
     }
