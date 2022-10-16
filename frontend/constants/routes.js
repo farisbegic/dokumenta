@@ -18,5 +18,9 @@ export default {
     settings: {
         link: '/profile/settings',
         name: 'Settings'
+    },
+    admin: {
+        link: '/admin',
+        name: 'Admin'
     }
 }
