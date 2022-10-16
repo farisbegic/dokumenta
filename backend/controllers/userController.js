@@ -10,16 +10,15 @@ const findUserByEmail = async (req, res) => {
 
 const updateUser = async (req, res) => {
     const { user_id } = req;
-    const {name, surname, phone_number, id_number, municipality_id} = req.body
+    const {name, surname, phone_number, id_number, phone} = req.body
 
     try {
         const user = {
             user_id,
             name,
             surname,
-            phone_number,
             id_number,
-            municipality_id
+            phone
         }
 
         const id = await userRepository.updateUser(user);

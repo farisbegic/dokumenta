@@ -15,7 +15,7 @@ const saveRequest = async (req, res) => {
     try {
         // should also save blob
         const { user_id: user } = req
-        const { name, surname, id_number, phone, is_urgent, is_paid, document } = req.body;
+        const { name, surname, id_number, phone, is_urgent, is_paid, document, is_completed } = req.body;
 
         const id = await documentRepository.saveRequest({
             name,
@@ -24,8 +24,9 @@ const saveRequest = async (req, res) => {
             phone,
             is_urgent,
             is_paid,
+            is_completed,
             document,
-            user
+            user,
         });
         res.status(200).json(id);
     } catch (error) {
